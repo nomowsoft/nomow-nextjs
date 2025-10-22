@@ -5,6 +5,9 @@
 import Hero from "@/components/home/hero";
 import Aboutus from "@/components/home/about_us";
 import OurService from "@/components/home/our_service";
+import Project from "@/components/home/projects";
+import StrategicPartner from "@/components/home/strategic_partner";
+import CustomerPartner from "@/components/home/customer_partner";
 
 const HomePage = () => {
     // useEffect(() => {
@@ -18,6 +21,9 @@ const HomePage = () => {
         <Hero />
         <Aboutus />
         <OurService />
+        <Project />
+        <StrategicPartner />
+        <CustomerPartner />
     </section>
   )
 }

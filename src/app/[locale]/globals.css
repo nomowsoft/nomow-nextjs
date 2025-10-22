@@ -19,3 +19,23 @@
 main{
   min-height: calc(100vh - 508.11px);
 }
+
+.swiper-button-prev.swiper-button-disabled ,.swiper-button-next.swiper-button-disabled {
+  background-color: #ffffff !important;
+  color: var(--color-primary) !important;
+}
+
+.swiper-button-prev ,.swiper-button-next {
+  color: #ffffff !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: var(--color-primary);
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 30px)) !important;
+  border-radius: 10px;
+}
+
+.swiper-pagination-bullet {
+  width: var(--swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 10px)) !important;
+  height: var(--swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 10px)) !important;
+}
