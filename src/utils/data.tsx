@@ -1,4 +1,4 @@
-import { MenuItem, Aboutus, OurService, Project, StrategicPartner, CustomerPartner } from "./types";
+import { MenuItem, Aboutus, OurService, Project, StrategicPartner, OurClient } from "./types";
 
 export const getMenuItem = (t: (key: string) => string): MenuItem[] => [
     {
@@ -81,7 +81,8 @@ export const getProjects: Project[] =  [
                 id: 5,
                 title : "ﺗﻌﺪداﻟﻌﻤﻼت ووﺣﺪات ﻋﻤﻞ وﻣﺮاﻛﺰ ﺗﻜﻠﻔﺔ و ﺗﻘﺎرﻳﺮ ﻻﻣﺤﺪودة"
             }
-        ]
+        ],
+        image: "/strategic_partner/masa-strategic-partner.svg"
     },
     {
         id: 2,
@@ -107,7 +108,8 @@ export const getProjects: Project[] =  [
                 id: 5,
                 title : "ﺗﻌﺪداﻟﻌﻤﻼت ووﺣﺪات ﻋﻤﻞ وﻣﺮاﻛﺰ ﺗﻜﻠﻔﺔ و ﺗﻘﺎرﻳﺮ ﻻﻣﺤﺪودة"
             }
-        ]
+        ],
+        image: "/header/logo.svg"
     }
 ]
 
@@ -128,7 +130,7 @@ export const getStrategicPartners: StrategicPartner[] =  [
     }
 ]
 
-export const getCustomerPartners: CustomerPartner[] =  [
+export const getOurClients: OurClient[] =  [
     {
         id: 1,
         image: "/strategic_partner/masa-strategic-partner.svg"

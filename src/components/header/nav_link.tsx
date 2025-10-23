@@ -1,4 +1,3 @@
-"use client"
 import Navitem from "./nav_item";
 import { useLocale, useTranslations } from "next-intl";
 import { getMenuItem } from '@/utils/data';

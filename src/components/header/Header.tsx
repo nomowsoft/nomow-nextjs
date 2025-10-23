@@ -3,26 +3,18 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import Navlink from "./nav_link";
 import Link from "next/link";
-// import LocaleSwitcher from "./swich_locale";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button"
 
 export default function Header() {
     const t = useTranslations("Header");
     const locale = useLocale();
     const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const pathname = usePathname();
     const isArabic = locale === "ar";
 
     const toggleMobileMenu = () => {
         setMobileMenuOpen((prev) => !prev);
     };
-
-    // إغلاق القائمة عند الانتقال لصفحة أخرى
-    useEffect(() => {
-        setMobileMenuOpen(false);
-    }, [pathname]);
 
     // إغلاق القائمة عند تكبير الشاشة
     useEffect(() => {
@@ -34,9 +26,9 @@ export default function Header() {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
-// max-w-screen-xl mx-auto
+
     return (
-        <header className={`${pathname === `/${locale}/morshed` ? "hidden" : ""} md:px-[50px] md:mt-8`}>
+        <header className="md:px-[50px] md:mt-8">
             <nav className="bg-white px-4 md:px-1 relative w-full md:rounded-full z-10">
                 <div className="flex flex-wrap justify-between items-center md:mx-3 relative">
                     <div className="flex items-center my-2">
@@ -49,13 +41,12 @@ export default function Header() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        {/* <LocaleSwitcher /> */}
                         <Button className="text-xl" variant="default" size="lg">
                             <span className="px-2">{t('contactus')}</span>
                         </Button>
                     </div>
 
-                    {/* زر فتح القائمة الجوالية */}
+                    {/* زر فتح قائمة الجوال */}
                     <button
                         type="button"
                         aria-controls="mobile-menu"
@@ -83,7 +74,7 @@ export default function Header() {
                         )}
                     </button>
 
-                    {/* القائمة الجوالية */}
+                    {/* قائمة الجوال */}
                     <div
                         id="mobile-menu"
                         className={`absolute z-30 top-28 py-4 w-full bg-white shadow-lg text-center transition-all duration-300 ease-in-out md:hidden
@@ -105,10 +96,6 @@ export default function Header() {
                                 <span className="px-2 text-white font-extrabold">{t('contactus')}</span>
                             </Link>
                         </div>
-
-                        {/* <div className="mt-4">
-                            <LocaleSwitcher />
-                        </div> */}
                     </div>
                 </div>
             </nav>

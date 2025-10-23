@@ -21,6 +21,7 @@ export type Project = {
     id: number;
     title: string;
     items: Items[];
+    image: string;
 };
 export type StrategicPartner = {
     id: number;
@@ -29,7 +30,7 @@ export type StrategicPartner = {
     description: string;
     image: string;
 };
-export type CustomerPartner = {
+export type OurClient = {
     id: number;
     image: string;
 };

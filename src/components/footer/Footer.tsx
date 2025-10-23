@@ -1,20 +1,13 @@
-"use client";
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const t = useTranslations('Footer');
-    const locale = useLocale();
-    const isArabic = locale === 'ar';
-    const pathname = usePathname();
-    const new_path = `${pathname}`
-    console.log(new_path);
 
     return (
-        <section className={`${new_path === `/${locale}/morshed` ? 'hidden' : ''}`}>
-            <footer className="w-full relative overflow-hidden px-18 sm:px-8 md:px-[50px] py-5 border-b border-gray-100">
+        <section>
+            <footer className="w-full relative overflow-hidden px-18 sm:px-8 md:px-[50px] py-5">
                 <div className="flex flex-wrap gap-y-8">
                     <div className="sm:w-full md:w-2/5 text-center">
                         <Image className="" src="/header/logo.svg" alt="..." width={220} height={20} />

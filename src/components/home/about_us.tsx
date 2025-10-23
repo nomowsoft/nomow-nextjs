@@ -6,9 +6,7 @@ const Aboutus = () => {
     const t = useTranslations('Aboutus');
     const values = getAboutus(t);
     return (
-        <section className="mx-5 md:mx-[50px] md:mb-32 md:shadow-xl py-8 bg-white relative rounded-md">
-            {/*   */}
-            {/* sm:w-1/2 md:w-1/3 lg:w-1/4 */}
+        <section className="md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto md:mb-32 md:shadow-xl py-8 bg-white relative rounded-2xl">
             <div className="flex flex-wrap justify-center gap-8 mx-5 lg:mx-10">
                 {values?.map((item) => (
                     <div

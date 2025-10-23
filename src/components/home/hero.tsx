@@ -1,17 +1,14 @@
 import Image from "next/image";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button"
-import { WiDirectionLeft } from "react-icons/wi";
 
 const Hero = () => {
-    const locale = useLocale();
-    const isArabic = locale === 'ar';
     const t = useTranslations("Hero");
     return (
         <section className="">
-            <div className="absolute -top-20 w-[100%] h-40 sm:h-50 md:h-200 bg-primary/5 blur-3xl" />
-            <div className="flex flex-col md:flex-row py-8 px-8 mx-5 md:mx-20 items-center">
-                <div className="md:w-3/5 py-8 md:py-2">
+            <div className="absolute -top-20 w-[100%] h-40 sm:h-100 md:h-200 bg-primary/5 blur-3xl" />
+            <div className="flex flex-col md:flex-row py-8 mx-5 sm:mx-10 md:mx-16 lg:mx-20 xl:mx-50 items-center">
+                <div className="w-full md:w-3/5 py-8 md:py-2">
                     <h1 className="text-4xl md:text-6xl font-bold mb-8">
                         <span className="text-[#42B8BD]">{t('title1')}</span>
                         <span className="text-secondary">{t('title2')}</span>
@@ -32,7 +29,6 @@ const Hero = () => {
                 </div>
 
             </div>
-            {/* <hr className="text-primary opacity-10" /> */}
         </section>
     )
 }

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +15,7 @@ const Project = () => {
     const isArabic = locale === 'ar';
 
     return (
-        <section className="px-4 sm:px-10 md:px-20 lg:px-35 xl:px-40 lg:py-[50px]">
+        <section className="lg:py-[50px] mx-5 sm:mx-10 md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto">
             <h1 className="text-center text-secondary text-3xl xl:text-4xl 2xl:text-5xl font-bold py-8" data-aos="fade-down">
                 منتجاتنا​
             </h1>
@@ -41,9 +42,11 @@ const Project = () => {
                         <SwiperSlide key={pro.id}>
                             <div className="pb-12 md:px-16">
                                 <div className="shadow-xl flex flex-wrap rounded-2xl">
-                                    <div className="w-full md:w-1/2" />
-                                    <div className="w-full md:w-1/2 py-2 px-4 md:px-1">
-                                        <h1 className="text-secondary text-[23px] font-bold pt-8 pb-4" data-aos="fade-down">
+                                    <div className="w-full md:w-1/2 rounded-xl flex justify-center items-center px-2">
+                                        <Image src={pro.image} alt={pro.title} width={500} height={20} className="h-25 md:h-40" />
+                                    </div>
+                                    <div className="w-full md:w-1/2 py-6 2xl:py-12 px-4 md:px-1">
+                                        <h1 className="text-secondary text-[23px] font-bold py-4" data-aos="fade-down">
                                             {pro.title}
                                         </h1>
                                         <ul className="space-y-2 text-sm">
