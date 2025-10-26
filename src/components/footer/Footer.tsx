@@ -50,6 +50,12 @@ export default function Footer() {
                                     00967774612600
                                 </span>
                             </li>
+                            <li className="text-secondary">
+                                <Image className="inline-block me-2" src="/footer/whats.svg" alt="..." width={20} height={20} />
+                                <span dir="ltr">
+                                    00967774612600
+                                </span>
+                            </li>
                         </ul>
                     </div>
                     <div className="w-full sm:w-1/3 md:w-1/5 sm:text-center pt-4">

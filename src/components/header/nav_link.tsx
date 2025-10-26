@@ -7,7 +7,7 @@ const Navlink = () => {
     const values = getMenuItem(t);
     const locale = useLocale();
     return (
-        <ul className="flex flex-col mt-4 text-lg md:flex-row md:mt-0">
+        <ul className="flex flex-col text-lg md:flex-row md:mt-0">
             {values.map((item) => (
                 <Navitem
                     name={item.name}
