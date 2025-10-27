@@ -1,0 +1,40 @@
+{
+    "MenuItem": {
+        "home": "Home"
+    },
+    "Hero": {
+        "title1": "Nomow",
+        "title2": "Soft",
+        "description": "Innovating technology, driving transformation and building the digital future together",
+        "textButton": "Learn more"
+    },
+    "Header": {
+      "contactus": "Contact us"
+    },
+    "Aboutus": {
+        "title1": "Our Vision",
+        "description1": "The first choice for customers on their digital transformation journey",
+        "title2": "Our Goal",
+        "description2": "Providing an environment that keeps pace with the demands of the digital age, equipped with the latest digital technologies and staffed by qualified national personnel.",
+        "title3": "Our Values",
+        "description3": "Quality, transparency and knowledge transfer"
+
+    },
+    "OurService": {
+        "title": "Our Services"
+
+    },
+    "StrategicPartner": {
+        "title": "Strategic Partner"
+    },
+    "OurClient": {
+        "title": "Our Clients"
+    },
+    "Footer": {
+        "description1": "NomowSoft is a Yemeni company headquartered in Seiyun, Hadhramaut Governorate, founded in 2021. Specialising in digital transformation solutions, we provide technical consulting services for the design and development of mobile applications and specialised computer systems. We are committed to serving the community.",
+        "description2": "We offer on-the-job training programmes for graduates and hold workshops in collaboration with local universities and institutes to nurture national talent.",
+        "titleLink": "Links",
+        "linkItem1": "Home",
+        "titleContactus": "Contact us"
+    }
+}
