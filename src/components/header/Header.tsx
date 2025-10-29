@@ -37,14 +37,14 @@ export default function Header() {
     }, [isMobileMenuOpen]);
 
     return (
-        <header className="md:px-[50px] md:mt-8">
+        <header className="md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto md:mt-8">
             <nav className="bg-white px-4 md:px-1 relative w-full md:rounded-full z-10">
-                <div className="flex flex-wrap justify-between items-center md:mx-3 relative">
+                <div className="flex flex-wrap justify-between items-center py-2 md:py-0 md:mx-3 relative">
                     <div className="flex items-center my-2">
                         <Link href="/" className="flex items-center">
                             <Image className="" height={20} width={100} src="/header/logo.svg" alt="Logo" />
                         </Link>
-                        <div className="hidden md:flex">
+                        <div className="hidden md:flex mx-6">
                             <Navlink />
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export default function Header() {
                                 : "opacity-0 -translate-x-full"
                         }`}
                 >
-                    <div className="flex flex-col h-screen">
+                    <div className="flex flex-col h-screen py-2">
 
                         <div className="flex flex-wrap justify-between items-center px-4 flex-shrink-0">
                             <Link href="/" className="flex items-center">
