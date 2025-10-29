@@ -6,10 +6,16 @@ export default function Footer() {
     const t = useTranslations('Footer');
 
     return (
-        <section>
-            <footer className="w-full relative overflow-hidden px-18 sm:px-8 md:px-[50px] py-5">
+        <section className="relative">
+            <div className="md:hidden absolute -top-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl rounded-full" />
+            <div className="md:hidden absolute -top-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl" />
+            <div className="md:hidden absolute -top-0 left-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl" />
+            <div className="absolute -bottom-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl rounded-full" />
+            <div className="absolute -bottom-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl" />
+            <div className="absolute -bottom-0 left-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl" />
+            <footer className="relative overflow-hidden mx-5 sm:mx-10 md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto  py-5">
                 <div className="flex flex-wrap gap-y-8">
-                    <div className="sm:w-full md:w-2/5 text-center">
+                    <div className="w-full md:w-2/5 text-center">
                         <Image className="" src="/header/logo.svg" alt="..." width={220} height={20} />
                         <p className="py-5 text-secondary text-justify">
                             {t('description1')}
@@ -19,7 +25,7 @@ export default function Footer() {
                         </p>
                     </div>
                     <div className="w-full sm:w-1/3 md:w-1/5 sm:text-center pt-4">
-                        <h3 className="text-[#42B8BD] mb-5">{t('titleLink')}</h3>
+                        <h3 className="text-primary mb-5">{t('titleLink')}</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <Link href="/" className="text-secondary hover:text-secondary/50">
@@ -30,7 +36,7 @@ export default function Footer() {
 
                     </div>
                     <div className="w-full sm:w-1/3 md:w-1/5 pt-4">
-                        <h3 className="text-[#42B8BD] mb-5">{t('titleContactus')}</h3>
+                        <h3 className="text-primary mb-5">{t('titleContactus')}</h3>
                         <ul className="space-y-2 text-sm">
                             <li className="text-secondary">
                                 <Image className="inline-block me-2" src="/footer/mail.svg" alt="..." width={20} height={20} />
@@ -59,7 +65,7 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div className="w-full sm:w-1/3 md:w-1/5 sm:text-center pt-4">
-                        <h3 className="text-[#42B8BD] mb-5">{t('titleContactus')}</h3>
+                        <h3 className="text-primary mb-5">{t('titleContactus')}</h3>
                         <ul className="space-y-2 text-sm">
                             <li className="text-secondary">
                                 <Image className="inline-block me-2" src="/footer/facebook.svg" alt="..." width={12} height={20} />
