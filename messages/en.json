@@ -30,6 +30,15 @@
     "OurClient": {
         "title": "Our Clients"
     },
+    "ContactUs": {
+        "title": "Contact us",
+        "send": "Send",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "service": "Service",
+        "description": "Description"
+    },
     "Footer": {
         "description1": "NomowSoft is a Yemeni company headquartered in Seiyun, Hadhramaut Governorate, founded in 2021. Specialising in digital transformation solutions, we provide technical consulting services for the design and development of mobile applications and specialised computer systems. We are committed to serving the community.",
         "description2": "We offer on-the-job training programmes for graduates and hold workshops in collaboration with local universities and institutes to nurture national talent.",
