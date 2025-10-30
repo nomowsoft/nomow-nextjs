@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Navlink from "./nav_link";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button"
 
 export default function Header() {
     const t = useTranslations("Header");
@@ -50,9 +49,9 @@ export default function Header() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        <Button className="text-xl" variant="default" size="lg">
+                        <Link href={`/${locale}/contact_us`} className="h-10 rounded-full px-6 bg-primary text-white hover:bg-primary/90 inline-flex items-center text-xl font-medium focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive">
                             <span className="px-2">{t('contactus')}</span>
-                        </Button>
+                        </Link>
                     </div>
 
                     {/* زر فتح قائمة الجوال */}
