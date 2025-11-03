@@ -19,12 +19,12 @@ export default function LocaleSwitcher() {
         <select
           defaultValue={localeActive}
           onChange={(e) => changeLocale(e.target.value)}
-          className="text-primary bg-transparent focus:border focus:border-white text-center"
+          className="text-primary text-sm bg-transparent focus:border focus:border-white text-center"
         >
           <option value="ar">عربي</option>
           <option value="en">English</option>
         </select>
-        <Image src="/header/swich_language.svg" alt="" width={40} height={10} />
+        <Image src="/header/swich_language.svg" alt="" width={20} height={10} />
       </div>
     </div>
   );

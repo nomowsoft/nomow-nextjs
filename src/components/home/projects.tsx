@@ -8,16 +8,17 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 import { getProjects } from "@/utils/data";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Project = () => {
+    const t = useTranslations('OurProjects');
     const locale = useLocale();
     const isArabic = locale === 'ar';
 
     return (
         <section className="lg:py-[50px] mx-5 sm:mx-10 md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto">
             <h1 className="text-center text-secondary text-3xl xl:text-4xl 2xl:text-5xl font-bold py-8" data-aos="fade-down">
-                منتجاتنا​
+                {t('title')}
             </h1>
             <div data-aos="fade-up">
                 <Swiper
