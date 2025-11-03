@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,22 +10,22 @@ import GoogleMap from '@/components/google/GoogleMap';
 
 const Contactus = () => {
     const t = useTranslations('ContactUs');
+    const locale = useLocale();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [title, setTitle] = useState('');
-    const [message, setMessage] = useState('');
+    const [service, setService] = useState('');
+    const [description, setDescription] = useState('');
     const [showModal, setShowModal] = useState(false);
-    const website = 'marahel_ai';
 
     const isValidEmail = (email: string) =>
         /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const isValidPhone = (phone: string) =>
-        /^\d{10}$/.test(phone);
+        /^\d{9}$/.test(phone);
 
     const handleContactUs = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!name || !email || !phone || !title || !message) {
+        if (!name || !email || !phone || !service || !description) {
             toast.error(t('filerequired'));
             return;
         }
@@ -42,7 +42,7 @@ const Contactus = () => {
         const res = await fetch('/api/contact_us', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message, phone, title, website }),
+            body: JSON.stringify({ name, email, description, phone, service }),
         });
 
         if (res.ok) {
@@ -50,8 +50,8 @@ const Contactus = () => {
             setName('');
             setEmail('');
             setPhone('');
-            setTitle('');
-            setMessage('');
+            setService('');
+            setDescription('');
         } else {
             toast.error(t('error'));
         }
@@ -65,31 +65,31 @@ const Contactus = () => {
     }, [showModal]);
 
     return (
-        <section className="my-16">
+        <section className="my-6 md:my-16">
             <div className="absolute -top-20 w-[100%] h-40 sm:h-50 md:h-100 bg-primary/10 blur-3xl" />
             <div className="absolute top-80 md:top-130 w-[100%] h-40 sm:h-20 md:h-50 bg-primary/10 blur-3xl" />
-            <div className="max-w-screen-lg mx-auto">
-                <div className="relative bg-white shadow-2xl rounded-4xl py-6 flex flex-wrap px-20">
-                    <div className="hidden md:flex absolute top-0 left-0 w-[33%] h-[100%] bg-primary rounded-e-4xl" />
-                    <div className="w-full md:w-1/2 px-5">
+            <div className="mx-5 sm:mx-10 md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto">
+                <div className="relative bg-white shadow-2xl rounded-4xl py-6 flex flex-wrap-reverse gap-y-4 lg:px-14">
+                    <div className={`hidden md:flex absolute top-0 w-[33%] h-[100%] bg-primary rounded-e-4xl ${locale === 'ar' ? 'left-0' : 'right-0'}`} />
+                    <div className="w-full md:w-1/2 px-3 md:px-5">
                         <h1 className="text-secondary text-start text-3xl font-extrabold">{t('title')}</h1>
                         <form onSubmit={handleContactUs}>
                             <div className="py-10">
                                 <Input className="my-2 rounded-full border-gray-300 focus-visible:border-primary focus-visible:ring-ring/50 focus-visible:ring-[0px]
                   focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-secondary hover:border-primary"
-                                    type="email" placeholder={t('name')} />
+                                    type="text" value={name} placeholder={t('name')} onChange={(e) => setName(e.target.value)} />
                                 <Input className="my-2 rounded-full border-gray-300 focus-visible:border-primary focus-visible:ring-ring/50 focus-visible:ring-[0px]
                   focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-secondary hover:border-primary"
-                                    type="email" placeholder={t('email')} />
+                                    type="text" value={email} placeholder={t('email')} onChange={(e) => setEmail(e.target.value)} />
                                 <Input className="my-2 rounded-full border-gray-300 focus-visible:border-primary focus-visible:ring-ring/50 focus-visible:ring-[0px]
                   focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-secondary hover:border-primary"
-                                    type="email" placeholder={t('phone')} />
+                                    type="text" value={phone} placeholder={t('phone')} onChange={(e) => setPhone(e.target.value)} />
                                 <Input className="my-2 rounded-full border-gray-300 focus-visible:border-primary focus-visible:ring-ring/50 focus-visible:ring-[0px]
                   focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-secondary hover:border-primary"
-                                    type="email" placeholder={t('service')} />
+                                    type="text" value={service} placeholder={t('service')} onChange={(e) => setService(e.target.value)} />
                                 <Textarea className="my-2 rounded-2xl border-gray-300 focus-visible:border-primary focus-visible:ring-ring/50 focus-visible:ring-[0px]
                   focus:outline-solid focus:outline-2 focus:outline-offset-2 focus:outline-secondary hover:border-primary min-h-30"
-                                    placeholder={t('description')} />                                
+                                    value={description} placeholder={t('description')} onChange={(e) => setDescription(e.target.value)} />                                
                                 <div className="flex justify-center my-4">
                                     <Button className="text-md w-[100%]" variant="secondary" size="lg">
                                         <span className="px-2">{t('send')}</span>
@@ -97,7 +97,7 @@ const Contactus = () => {
                                 </div>
                             </div>
                         </form>
-                        <div className="flex flex-wrap text-secondary">
+                        <div className="flex flex-wrap justify-center gap-y-3 text-secondary">
                             <div className="flex px-2">
                                 <Image className="inline-block me-2" src="/footer/mail.svg" alt="..." width={20} height={20} />
                                 <div>
@@ -133,7 +133,7 @@ const Contactus = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="relative w-full md:w-1/2 px-5 h-100">
+                    <div className="relative w-full md:w-1/2 px-5 min-h-80">
                         <GoogleMap lat={15.94362856860166} lng={48.79463890381742} zoom={14} height="100%" />
                     </div>
                 </div>

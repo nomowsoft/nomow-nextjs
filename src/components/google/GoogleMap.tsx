@@ -15,11 +15,21 @@ export default function GoogleMap({ lat = 24.774265, lng = 46.738586, zoom = 12,
 
   const center = useMemo(() => ({ lat, lng }), [lat, lng]);
 
-  if (loadError) return <div>فشل تحميل الخريطة.</div>;
-  if (!isLoaded) return <div>جارِ تحميل الخريطة…</div>;
+  const options = useMemo(() => ({
+    mapId: undefined,
+    disableDefaultUI: true,
+    zoomControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    mapTypeControl: false,
+    gestureHandling: 'greedy',
+  }), []);
+
+  if (loadError) return <div className="text-center p-4">فشل تحميل الخريطة — تحقق من مفتاح API و Console</div>;
+  if (!isLoaded) return <div className="text-center p-4">جارِ تحميل الخريطة…</div>;
 
   return (
-    <GMap mapContainerStyle={containerStyle(height)} center={center} zoom={zoom}>
+    <GMap mapContainerStyle={containerStyle(height)} center={center} zoom={zoom} options={options}>
       <Marker position={center} />
     </GMap>
   );
