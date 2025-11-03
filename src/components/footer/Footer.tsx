@@ -1,18 +1,19 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
     const t = useTranslations('Footer');
+    const locale = useLocale();
 
     return (
         <section className="relative">
             <div className="md:hidden absolute -top-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl rounded-full" />
-            <div className="md:hidden absolute -top-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl" />
-            <div className="md:hidden absolute -top-0 left-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl" />
+            <div className={`md:hidden absolute -top-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl ${locale === 'ar' ? 'right-[33%]' : 'left-[33%]'}`} />
+            <div className={`md:hidden absolute -top-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl ${locale === 'ar' ? 'left-0' : 'right-0'}`} />
             <div className="absolute -bottom-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl rounded-full" />
-            <div className="absolute -bottom-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl" />
-            <div className="absolute -bottom-0 left-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl" />
+            <div className={`absolute -bottom-0 right-[33%] w-[34%] h-50 sm:h-50 md:h-50 bg-primary/10 blur-3xl ${locale === 'ar' ? 'right-[33%]' : 'left-[33%]'}`} />
+            <div className={`absolute -bottom-0 w-[30%] h-50 sm:h-50 md:h-50 bg-secondary/10 blur-3xl ${locale === 'ar' ? 'left-0' : 'right-0'}`} />
             <footer className="relative overflow-hidden mx-5 sm:mx-10 md:mx-16 lg:max-w-screen-lg 2xl:max-w-screen-xl lg:mx-auto  py-5">
                 <div className="flex flex-wrap gap-y-8">
                     <div className="w-full md:w-2/5 text-center">

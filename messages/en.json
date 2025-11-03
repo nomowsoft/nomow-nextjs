@@ -21,14 +21,38 @@
 
     },
     "OurService": {
-        "title": "Our Services"
+        "title": "Our Services",
+        "title1": "Analysis and preparation of BRD work requirement documents",
+        "title2": "Analysis and preparation of BRD work requirement documents",
+        "title3": "Mobile application design and development",
+        "title4": "Interactive models",
+        "title5": "Development of Enterprise Resource Planning (ERP) systems",
+        "title6": "Design and development of shops, portals and websites"
 
+    },
+    "OurProjects": {
+        "title": "Our Projects"
     },
     "StrategicPartner": {
         "title": "Strategic Partner"
     },
     "OurClient": {
         "title": "Our Clients"
+    },
+    "ContactUs": {
+        "title": "Contact us",
+        "send": "Send",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "service": "Service",
+        "description": "Description",
+        "invalidEmail": "Invalid email format. Example: example@email.com",
+        "invalidPhone": "Invalid phone number.",
+        "filerequired": "All fields are required",
+        "successTitle": "Thank you for contacting us",
+        "success": "We will get in touch with you",
+        "ok": "OK"
     },
     "Footer": {
         "description1": "NomowSoft is a Yemeni company headquartered in Seiyun, Hadhramaut Governorate, founded in 2021. Specialising in digital transformation solutions, we provide technical consulting services for the design and development of mobile applications and specialised computer systems. We are committed to serving the community.",
