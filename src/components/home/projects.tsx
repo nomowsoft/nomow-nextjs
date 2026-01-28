@@ -1,58 +1,63 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { ArrowLeft, CheckCircle2, LayoutDashboard, Smartphone, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 import { getProjects } from "@/utils/data";
 
 const Project = () => {
+    const t = useTranslations('Projects');
+    const tCommon = useTranslations('OurService');
     const [activeIndex, setActiveIndex] = useState(0);
+
+    const projects = useMemo(() => getProjects(t), [t]);
 
     // Auto-rotate effect
     useEffect(() => {
         const timer = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % getProjects.length);
+            setActiveIndex((prev) => (prev + 1) % projects.length);
         }, 8000);
         return () => clearInterval(timer);
-    }, []);
+    }, [projects.length]);
 
-    const activeProject = getProjects[activeIndex];
+    const activeProject = projects[activeIndex];
 
     return (
-        <section id="products" className="py-24 lg:py-32 relative overflow-hidden bg-[#fafafa]">
+        <section id="products" className="py-24 lg:py-32 relative overflow-hidden bg-[#fafafa] dark:bg-secondary/50 transition-colors duration-300">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform origin-top h-screen -z-10" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[100px] -z-10" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="mb-20 text-center lg:text-right" data-aos="fade-down">
-                    <h2 className="text-4xl md:text-6xl font-black text-secondary leading-tight mb-6">
-                        منتجاتنا <span className="text-primary">الرائدة</span>
+                <div className="mb-20 text-start" data-aos="fade-down">
+                    <h2 className="text-4xl md:text-6xl font-black text-secondary dark:text-white leading-tight mb-6">
+                        {t('title')} <span className="text-primary italic">{t('subtitle')}</span>
                     </h2>
-                    <p className="text-xl text-gray-500 font-bold max-w-2xl">
-                        حلول برمجية جاهزة وقابلة للتخصيص، مصممة بأعلى المعايير العالمية لتلبية طموحات أعمالكم.
+                    <p className="text-xl text-gray-500 dark:text-gray-400 font-bold max-w-2xl">
+                        {t('desc')}
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-12 items-start">
                     {/* Left: Product Selection (Navigator) */}
                     <div className="lg:col-span-4 space-y-4 order-2 lg:order-1" data-aos="fade-left">
-                        {getProjects?.map((pro, index) => (
+                        {projects?.map((pro, index) => (
                             <button
                                 key={pro.id}
                                 onClick={() => setActiveIndex(index)}
-                                className={`w-full text-right p-8 rounded-[30px] border-2 transition-all duration-500 flex items-center justify-between group ${activeIndex === index
-                                        ? "bg-white border-primary shadow-2xl shadow-primary/10 scale-105"
-                                        : "bg-transparent border-transparent hover:border-gray-200 opacity-60 hover:opacity-100"
+                                className={`w-full text-start p-8 rounded-[30px] border-2 transition-all duration-500 flex items-center justify-between group ${activeIndex === index
+                                    ? "bg-white dark:bg-white/10 border-primary shadow-2xl shadow-primary/10 scale-105"
+                                    : "bg-transparent border-transparent hover:border-gray-200 dark:hover:border-white/10 opacity-60 hover:opacity-100"
                                     }`}
                             >
                                 <div className="flex items-center gap-6">
-                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${activeIndex === index ? "bg-primary text-white" : "bg-gray-100 text-secondary"
+                                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${activeIndex === index ? "bg-primary text-white" : "bg-gray-100 dark:bg-white/5 text-secondary dark:text-white"
                                         }`}>
                                         {index === 0 ? <LayoutDashboard className="w-7 h-7" /> : <Smartphone className="w-7 h-7" />}
                                     </div>
                                     <div>
-                                        <h3 className={`text-2xl font-black transition-colors duration-500 ${activeIndex === index ? "text-secondary" : "text-gray-400"
+                                        <h3 className={`text-2xl font-black transition-colors duration-500 ${activeIndex === index ? "text-secondary dark:text-white" : "text-gray-400 dark:text-white/40"
                                             }`}>
                                             {pro.title}
                                         </h3>
@@ -61,17 +66,17 @@ const Project = () => {
                                         )}
                                     </div>
                                 </div>
-                                <ChevronLeft className={`w-6 h-6 transition-all duration-500 ${activeIndex === index ? "text-primary translate-x-0" : "text-gray-300 translate-x-4 opacity-0"
+                                <ChevronLeft className={`w-6 h-6 transition-all duration-500 rtl:rotate-180 ${activeIndex === index ? "text-primary translate-x-0" : "text-gray-300 translate-x-4 opacity-0 rtl:-translate-x-4"
                                     }`} />
                             </button>
                         ))}
 
-                        <div className="mt-12 p-8 bg-secondary rounded-[35px] text-white">
-                            <h4 className="text-xl font-black mb-4">هل تبحث عن حل مخصص؟</h4>
-                            <p className="text-sm font-bold opacity-70 mb-6">نحن نطور حلولاً برمجية فريدة تناسب احتياجاتك الخاصة بدقة متناهية.</p>
+                        <div className="mt-12 p-8 bg-secondary dark:bg-white/5 rounded-[35px] text-white">
+                            <h4 className="text-xl font-black mb-4">{t('custom_title')}</h4>
+                            <p className="text-sm font-bold opacity-70 mb-6">{t('custom_desc')}</p>
                             <button className="flex items-center gap-2 text-primary font-black group">
-                                <span>تواصل مع مستشارنا</span>
-                                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-2 transition-transform duration-300" />
+                                <span>{t('custom_btn')}</span>
+                                <ArrowLeft className="w-5 h-5 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 transition-transform duration-300 rtl:rotate-180" />
                             </button>
                         </div>
                     </div>
@@ -85,14 +90,14 @@ const Project = () => {
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -50 }}
                                 transition={{ duration: 0.5 }}
-                                className="bg-white rounded-[50px] overflow-hidden shadow-2xl border border-gray-100"
+                                className="bg-white dark:bg-white/5 rounded-[50px] overflow-hidden shadow-2xl border border-gray-100 dark:border-white/10"
                             >
                                 <div className="grid md:grid-cols-2">
                                     <div className="p-10 md:p-16 flex flex-col justify-center">
                                         <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-xs font-black mb-6 uppercase tracking-widest">
-                                            منتج مميز
+                                            {t('featured_badge')}
                                         </div>
-                                        <h3 className="text-4xl lg:text-5xl font-black text-secondary mb-8">
+                                        <h3 className="text-4xl lg:text-5xl font-black text-secondary dark:text-white mb-8">
                                             {activeProject.title}
                                         </h3>
 
@@ -102,7 +107,7 @@ const Project = () => {
                                                     <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-1">
                                                         <CheckCircle2 className="w-4 h-4" />
                                                     </div>
-                                                    <span className="text-gray-600 font-bold text-lg leading-relaxed group-hover/item:text-secondary transition-colors">
+                                                    <span className="text-gray-600 dark:text-gray-400 font-bold text-lg leading-relaxed group-hover/item:text-secondary dark:group-hover/item:text-white transition-colors">
                                                         {item.title}
                                                     </span>
                                                 </li>
@@ -110,25 +115,25 @@ const Project = () => {
                                         </ul>
 
                                         <div className="mt-12">
-                                            <button className="bg-secondary hover:bg-secondary/90 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-secondary/20 transition-all duration-300 transform hover:scale-105 active:scale-95">
-                                                طلب عرض سعر
+                                            <button className="bg-secondary dark:bg-primary hover:bg-secondary/90 dark:hover:bg-primary/90 text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl shadow-secondary/20 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                                                {t('price_btn')}
                                             </button>
                                         </div>
                                     </div>
 
-                                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-12 flex items-center justify-center relative">
+                                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-white/5 dark:to-white/10 p-12 flex items-center justify-center relative">
                                         <div className="absolute top-10 right-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
                                         <div className="relative z-10 w-full aspect-square">
                                             <Image
                                                 src={activeProject.image}
                                                 alt={activeProject.title}
                                                 fill
-                                                className="object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)] transform group-hover:scale-110 transition-transform duration-700"
+                                                className="object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)] transform group-hover:scale-110 transition-transform duration-700 dark:brightness-110"
                                             />
                                         </div>
 
                                         {/* Progress Bar for Auto-rotate */}
-                                        <div className="absolute bottom-0 left-0 w-full h-2 bg-gray-200">
+                                        <div className="absolute bottom-0 left-0 w-full h-2 bg-gray-200 dark:bg-white/10">
                                             <motion.div
                                                 key={`progress-${activeIndex}`}
                                                 initial={{ width: "0%" }}

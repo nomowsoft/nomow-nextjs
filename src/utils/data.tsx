@@ -56,81 +56,81 @@ export const getOurServices = (t: (key: string) => string): OurService[] => [
     }
 ]
 
-export const getProjects: Project[] =  [
+export const getProjects = (t: (key: string) => string): Project[] => [
     {
         id: 1,
-        title: "نظام نمو المالي",
+        title: t('project1_title'),
         items: [
             {
                 id: 1,
-                title : "إدارةاﻟﺤﺴـﺎﺑــــﺎت ﺷـــﺮﻛــــﺔ واﺣﺪة أو شرﻛﺎت ﻣﺘﻌﺪدة"
-            }, 
+                title: t('project1_feat1')
+            },
             {
                 id: 2,
-                title : "اﻟــﻔـــﻮاﺗـــﻴـــــــﺮ"
-            }, 
+                title: t('project1_feat2')
+            },
             {
                 id: 3,
-                title : "إدارةاﻻﺻﻮل"
-            }, 
+                title: t('project1_feat3')
+            },
             {
                 id: 4,
-                title : "اﻟﻤﻮازﻧـﺎت وارﺗﺒﺎﻃﻬﺎ ﺑــﺒــﻨـــــﻮد اﻟـــﺼـــــﺮف"
+                title: t('project1_feat4')
             },
             {
                 id: 5,
-                title : "ﺗﻌﺪداﻟﻌﻤﻼت ووﺣﺪات ﻋﻤﻞ وﻣﺮاﻛﺰ ﺗﻜﻠﻔﺔ و ﺗﻘﺎرﻳﺮ ﻻﻣﺤﺪودة"
+                title: t('project1_feat5')
             }
         ],
         image: "/strategic_partner/masa-strategic-partner.svg"
     },
     {
         id: 2,
-        title: "نظام الخياطة",
+        title: t('project2_title'),
         items: [
             {
                 id: 1,
-                title : "إدارةاﻟﺤﺴـﺎﺑــــﺎت ﺷـــﺮﻛــــﺔ واﺣﺪة أو شرﻛﺎت ﻣﺘﻌﺪدة"
-            }, 
+                title: t('project2_feat1')
+            },
             {
                 id: 2,
-                title : "اﻟــﻔـــﻮاﺗـــﻴـــــــﺮ"
-            }, 
+                title: t('project2_feat2')
+            },
             {
                 id: 3,
-                title : "إدارةاﻻﺻﻮل"
-            }, 
+                title: t('project2_feat3')
+            },
             {
                 id: 4,
-                title : "اﻟﻤﻮازﻧـﺎت وارﺗﺒﺎﻃﻬﺎ ﺑــﺒــﻨـــــﻮد اﻟـــﺼـــــﺮف"
+                title: t('project2_feat4')
             },
             {
                 id: 5,
-                title : "ﺗﻌﺪداﻟﻌﻤﻼت ووﺣﺪات ﻋﻤﻞ وﻣﺮاﻛﺰ ﺗﻜﻠﻔﺔ و ﺗﻘﺎرﻳﺮ ﻻﻣﺤﺪودة"
+                title: t('project2_feat5')
             }
         ],
         image: "/header/logo.svg"
     }
 ]
 
-export const getStrategicPartners: StrategicPartner[] =  [
+export const getStrategicPartners = (t: (key: string) => string): StrategicPartner[] => [
     {
         id: 1,
-        title: "ماسا",
+        title: t('partner1_title'),
         color: "#5B2D74",
-        description: "شركة سعودية مقرها الرياض، متخصصة في الاستشارات وتقنية المعلومات، تعمل في مجال التحول الرقمي وتطوير الأنظمة، وهي الشريك الذهبي لشرك Odoo ",
+        description: t('partner1_desc'),
         image: "/strategic_partner/masa-strategic-partner.svg"
     },
     {
         id: 2,
-        title: "نموسوفت",
+        title: t('partner2_title'),
         color: "#23418F",
-        description: "شركة سعودية مقرها الرياض، متخصصة في الاستشارات وتقنية المعلومات، تعمل في مجال التحول الرقمي وتطوير الأنظمة، وهي الشريك الذهبي لشرك Odoo",
+        description: t('partner2_desc'),
         image: "/header/logo.svg"
     }
 ]
 
-export const getOurClients: OurClient[] =  [
+export const getOurClients: OurClient[] = [
     {
         id: 1,
         image: "/strategic_partner/masa-strategic-partner.svg"

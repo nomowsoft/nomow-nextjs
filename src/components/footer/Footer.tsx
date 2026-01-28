@@ -1,10 +1,12 @@
 "use client";
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MessageCircle, Facebook, Twitter, Linkedin, Github, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
 
 export default function Footer() {
     const t = useTranslations('Footer');
+    const ts = useTranslations('OurService');
 
     return (
         <section className="bg-secondary relative overflow-hidden pt-24 pb-12">
@@ -17,11 +19,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
                     {/* Brand Section */}
                     <div className="space-y-8">
-                        <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-2xl">
-                                <span className="text-xl font-black text-primary">نس</span>
-                            </div>
-                            <span className="text-2xl font-black text-white">نمو سوفت</span>
+                        <div className="relative w-[150px] h-[90px]">
+                            <Image src="/header/logo.svg" alt="Logo" fill className="object-contain dark:brightness-200" />
                         </div>
                         <p className="text-gray-400 font-medium leading-relaxed">
                             {t('description1')} {t('description2')}
@@ -47,15 +46,21 @@ export default function Footer() {
                     {/* Quick Links */}
                     <div>
                         <h3 className="text-white font-black text-xl mb-8 flex items-center gap-2">
-                            روابط سريعة
+                            {t('titleLink')}
                             <div className="w-8 h-1 bg-primary rounded-full" />
                         </h3>
                         <ul className="space-y-4">
-                            {['الرئيسية', 'من نحن', 'خدماتنا', 'منتجاتنا', 'المدونة'].map((link) => (
-                                <li key={link}>
-                                    <Link href="#" className="text-gray-400 font-bold hover:text-white hover:translate-x-[-8px] inline-block transition-all duration-300 flex items-center gap-2">
+                            {[
+                                { name: t('linkItem1'), href: "#" },
+                                { name: t('linkItem2'), href: "#" },
+                                { name: t('linkItem3'), href: "#" },
+                                { name: t('linkItem4'), href: "#" },
+                                { name: t('linkItem5'), href: "#" }
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link href={link.href} className="text-gray-400 font-bold hover:text-white hover:translate-x-2 rtl:hover:translate-x-[-2px] inline-block transition-all duration-300 flex items-center gap-2">
                                         <ExternalLink className="w-3 h-3 text-primary" />
-                                        {link}
+                                        {link.name}
                                     </Link>
                                 </li>
                             ))}
@@ -65,22 +70,22 @@ export default function Footer() {
                     {/* Services */}
                     <div>
                         <h3 className="text-white font-black text-xl mb-8 flex items-center gap-2">
-                            خدماتنا
+                            {t('linkItem3')}
                             <div className="w-8 h-1 bg-primary rounded-full" />
                         </h3>
                         <ul className="space-y-4 text-gray-400 font-bold">
-                            <li>تطوير تطبيقات الجوال</li>
-                            <li>تصميم واجهات UI/UX</li>
-                            <li>أنظمة ERP</li>
-                            <li>المتاجر الإلكترونية</li>
-                            <li>أتمتة العمليات</li>
+                            <li>{ts('service2_title')}</li>
+                            <li>{ts('service3_title')}</li>
+                            <li>{ts('service4_title')}</li>
+                            <li>{ts('service5_title')}</li>
+                            <li>{ts('service6_title')}</li>
                         </ul>
                     </div>
 
                     {/* Contact Info */}
                     <div>
                         <h3 className="text-white font-black text-xl mb-8 flex items-center gap-2">
-                            تواصل معنا
+                            {t('titleContactus')}
                             <div className="w-8 h-1 bg-primary rounded-full" />
                         </h3>
                         <ul className="space-y-6">
@@ -89,7 +94,7 @@ export default function Footer() {
                                     <Mail className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">البريد الإلكتروني</div>
+                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">{t('email_label')}</div>
                                     <div className="text-white font-bold">Info@nomowsoft.com</div>
                                 </div>
                             </li>
@@ -98,7 +103,7 @@ export default function Footer() {
                                     <Phone className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">اتصل بنا</div>
+                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">{t('phone_label')}</div>
                                     <div className="text-white font-bold" dir="ltr">+966 5071 40918</div>
                                 </div>
                             </li>
@@ -107,7 +112,7 @@ export default function Footer() {
                                     <MessageCircle className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">واتساب</div>
+                                    <div className="text-gray-500 text-xs font-black uppercase mb-1">{t('whatsapp_label')}</div>
                                     <div className="text-white font-bold" dir="ltr">+967 7746 12600</div>
                                 </div>
                             </li>
@@ -118,17 +123,17 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <p className="text-gray-500 font-bold flex items-center gap-2">
-                        صنع بكل
+                        {t('made_with')}
                         <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-                        بواسطة فريق نمو سوفت © 2025
+                        {t('by')}
                     </p>
                     <div className="flex gap-8">
-                        <Link href="#" className="text-gray-500 font-bold hover:text-white transition-colors">سياسة الخصوصية</Link>
-                        <Link href="#" className="text-gray-500 font-bold hover:text-white transition-colors">الشروط والأحكام</Link>
+                        <Link href="#" className="text-gray-500 font-bold hover:text-white transition-colors">{t('privacy')}</Link>
+                        <Link href="#" className="text-gray-500 font-bold hover:text-white transition-colors">{t('terms')}</Link>
                     </div>
                     <div className="flex items-center gap-2 text-gray-500 font-bold">
                         <ShieldCheck className="w-5 h-5 text-primary" />
-                        آمن وموثوق 100%
+                        {t('secure')}
                     </div>
                 </div>
             </footer>

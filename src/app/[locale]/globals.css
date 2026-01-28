@@ -16,6 +16,8 @@
   --font-doto: Doto, "sans-serif";
 }
 
+@variant dark (&:where(.dark, .dark *));
+
 main{
   min-height: calc(100vh - 508.11px);
 }

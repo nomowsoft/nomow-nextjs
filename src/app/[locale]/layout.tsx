@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing';
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 import { AOSInit } from "@/components/AOSInit";
+import { ThemeProvider } from "@/components/theme-provider";
 
 type Locale = 'en' | 'ar';
 
@@ -16,20 +17,27 @@ export default async function RootLayout({ children, params }: { children: React
     notFound();
   }
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/header/logo.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
       </head>
-      <body className="font-doto">
+      <body className="font-doto bg-white dark:bg-secondary transition-colors duration-300">
         <AOSInit />
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </NextIntlClientProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <main>
+              {children}
+            </main>
+            <Footer />
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
