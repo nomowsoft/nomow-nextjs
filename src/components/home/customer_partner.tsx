@@ -23,7 +23,7 @@ const OurClient = () => {
                 <div className="text-center mb-24" data-aos="fade-down">
                     <div className="inline-flex items-center gap-3 mb-4">
                         <Users className="w-10 h-10 text-primary" />
-                        <h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-bold bg-gradient-to-r from-secondary dark:from-white via-primary to-secondary dark:to-white bg-clip-text text-transparent">
+                        <h1 className="text-4xl xl:text-5xl 2xl:text-6xl font-bold bg-gradient-to-r from-secondary dark:from-white via-primary to-secondary dark:to-white bg-clip-text text-transparent inline-block leading-tight py-4">
                             {t("title").split(' ').slice(0, 2).join(' ')}
                         </h1>
                         <Users className="w-10 h-10 text-primary" />
