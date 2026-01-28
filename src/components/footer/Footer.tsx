@@ -20,7 +20,7 @@ export default function Footer() {
                     {/* Brand Section */}
                     <div className="space-y-8">
                         <div className="relative w-[150px] h-[90px]">
-                            <Image src="/header/logo.svg" alt="Logo" fill className="object-contain dark:brightness-200" />
+                            <Image src="/header/logo.svg" alt="Logo" fill className="object-contain brightness-200" />
                         </div>
                         <p className="text-gray-400 font-medium leading-relaxed">
                             {t('description1')} {t('description2')}
