@@ -49,7 +49,7 @@ const About = () => {
                         </h2>
                         <div className="space-y-6 text-xl text-gray-600 font-medium leading-relaxed max-w-2xl">
                             <p>
-                                في "نمو سوفت"، نؤمن بأن كل شركة تستحق أن تكون في القمة. منذ انطلاقتنا، كرسنا جهودنا لفهم احتياجات السوق وتقديم حلول تتجاوز التوقعات التقليدية.
+                                في &quot;نمو سوفت&quot;، نؤمن بأن كل شركة تستحق أن تكون في القمة. منذ انطلاقتنا، كرسنا جهودنا لفهم احتياجات السوق وتقديم حلول تتجاوز التوقعات التقليدية.
                             </p>
                             <p>
                                 نعتمد على منهجيات حديثة في التحليل والتطوير، مما يمنح عملاءنا ميزة تنافسية حقيقية في عالم رقمي سريع التغير.
@@ -71,9 +71,11 @@ const About = () => {
                     <div className="relative order-1 lg:order-2" data-aos="zoom-in">
                         <div className="relative z-10 rounded-[50px] overflow-hidden shadow-2xl border-8 border-white group">
                             <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/0 transition-colors duration-700" />
-                            <img
+                            <Image
                                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1000"
                                 alt="Team Sync"
+                                width={1000}
+                                height={500}
                                 className="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110"
                             />
                         </div>
@@ -90,7 +92,6 @@ const About = () => {
                 {/* Lower Section: Pillars */}
                 <div className="grid md:grid-cols-3 gap-8">
                     {items.map((pillar, index) => {
-                        const Icon = pillar.icon;
                         return (
                             <div
                                 key={index}

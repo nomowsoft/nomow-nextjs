@@ -1,11 +1,9 @@
 "use client";
 import Image from "next/image";
 import { getStrategicPartners } from "@/utils/data";
-import { useTranslations } from "next-intl";
 import { Handshake, ShieldCheck, Globe } from "lucide-react";
 
 const StrategicPartner = () => {
-    const t = useTranslations("StrategicPartner");
 
     return (
         <section className="relative py-24 lg:py-32 overflow-hidden bg-white">
