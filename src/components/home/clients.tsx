@@ -1,6 +1,5 @@
 "use client";
 import { Star, Quote, MessageSquareQuote } from "lucide-react";
-import Image from "next/image";
 
 const Clients = () => {
   const testimonials = [
@@ -87,9 +86,8 @@ const Clients = () => {
                 ))}
               </div>
 
-              {/* Review Text */}
               <p className="text-gray-600 font-bold text-lg leading-relaxed mb-10 italic">
-                "{testimonial.review}"
+                &quot;{testimonial.review}&quot;
               </p>
 
               {/* User Profile */}

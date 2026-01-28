@@ -1,7 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Code2, Sparkles, Rocket, Laptop, ShieldCheck } from "lucide-react";
-import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -125,7 +124,7 @@ const Hero = () => {
                 <div className="space-y-2 text-gray-300">
                   <p><span className="text-pink-400">const</span> solution = () =&gt; &#123;</p>
                   <p className="pl-4">growth: <span className="text-green-400">true</span>,</p>
-                  <p className="pl-4">innovation: <span className="text-green-400">"unlimited"</span></p>
+                  <p className="pl-4">innovation: <span className="text-green-400">&quot;unlimited&quot;</span></p>
                   <p>&#125;;</p>
                 </div>
               </div>

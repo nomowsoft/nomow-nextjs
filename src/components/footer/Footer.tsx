@@ -1,6 +1,5 @@
 "use client";
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Mail, Phone, MessageCircle, Facebook, Twitter, Linkedin, Github, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
 

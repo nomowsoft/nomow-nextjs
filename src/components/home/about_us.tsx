@@ -1,7 +1,6 @@
 "use client";
 import { Target, Eye, Flag, Rocket, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const About = () => {
     const items = [

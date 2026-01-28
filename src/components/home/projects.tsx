@@ -1,14 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, CheckCircle2, LayoutDashboard, Database, Smartphone, Globe, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, LayoutDashboard, Smartphone, ChevronLeft } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 import { getProjects } from "@/utils/data";
-import { useLocale } from "next-intl";
 
 const Project = () => {
-    const locale = useLocale();
-    const isArabic = locale === 'ar';
     const [activeIndex, setActiveIndex] = useState(0);
 
     // Auto-rotate effect

@@ -2,8 +2,7 @@
 import Image from "next/image";
 import { getStrategicPartners } from "@/utils/data";
 import { useTranslations } from "next-intl";
-import { Quote, ArrowRight, Handshake, ShieldCheck, Globe } from "lucide-react";
-import { motion } from "framer-motion";
+import { Handshake, ShieldCheck, Globe } from "lucide-react";
 
 const StrategicPartner = () => {
     const t = useTranslations("StrategicPartner");
@@ -44,7 +43,7 @@ const StrategicPartner = () => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-6" data-aos="zoom-in">
-                        {getStrategicPartners?.map((par, index) => (
+                        {getStrategicPartners?.map((par) => (
                             <div
                                 key={par.id}
                                 className="group relative bg-white rounded-[35px] p-8 border border-gray-100 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-3"
