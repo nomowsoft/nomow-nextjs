@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import { AOSInit } from "@/components/AOSInit";
 
 type Locale = 'en' | 'ar';
 
@@ -17,10 +18,11 @@ export default async function RootLayout({ children, params }: { children: React
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <head>
-          <link rel="icon" href="/header/logo.svg" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
+        <link rel="icon" href="/header/logo.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"></meta>
       </head>
       <body className="font-doto">
+        <AOSInit />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main>
@@ -32,3 +34,4 @@ export default async function RootLayout({ children, params }: { children: React
     </html>
   );
 }
+

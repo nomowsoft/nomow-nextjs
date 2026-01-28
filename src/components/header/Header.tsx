@@ -1,128 +1,134 @@
 "use client";
-import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Rocket } from "lucide-react";
 import { useState, useEffect } from "react";
-import Navlink from "./nav_link";
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button"
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
-export default function Header() {
-    const t = useTranslations("Header");
-    const locale = useLocale();
-    const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const isArabic = locale === "ar";
+const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    const toggleMobileMenu = () => {
-        setMobileMenuOpen((prev) => !prev);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
     };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  const menuItems = [
+    { title: "الرئيسية", href: "#hero" },
+    { title: "من نحن", href: "#about" },
+    { title: "خدماتنا", href: "#services" },
+    { title: "منتجاتنا", href: "#products" },
+    { title: "شركاؤنا", href: "#partners" },
+  ];
 
-    useEffect(() => {
-        const body = document.body;
-        const html = document.documentElement;
+  return (
+    <header className={`top-0 sticky right-0 left-0 z-50 transition-all duration-300 ${scrolled
+        ? "bg-white/90 backdrop-blur-xl border-b border-gray-100 shadow-xl py-2"
+        : "bg-transparent"
+      }`}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-24">
+          {/* Logo */}
+          <Image src="/header/logo.svg" alt="Logo" width={150} height={150} />
 
-        if (isMobileMenuOpen) {
-            const scrollbarWidth = window.innerWidth - html.clientWidth;
-            body.style.overflow = "hidden";
-            if (scrollbarWidth > 0) body.style.paddingRight = `${scrollbarWidth}px`;
-        } else {
-            body.style.overflow = "";
-            body.style.paddingRight = "";
-        }
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-10">
+            {menuItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="relative text-base font-black text-secondary/70 hover:text-primary transition-colors py-2 group"
+              >
+                {item.title}
+                <span className="absolute bottom-0 right-0 w-0 h-1 bg-primary rounded-full group-hover:w-full transition-all duration-300" />
+              </a>
+            ))}
+          </nav>
 
-        return () => {
-            body.style.overflow = "";
-            body.style.paddingRight = "";
-        };
-    }, [isMobileMenuOpen]);
+          {/* CTA Button */}
+          <div className="flex items-center gap-6">
+            <Button
+              className="hidden md:flex bg-secondary hover:bg-secondary/90 text-white shadow-2xl px-8 py-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+            >
+              تحميل البروفايل
+            </Button>
 
-    return (
-        <header className="md:px-[50px] md:mt-8">
-            <nav className="bg-white px-4 md:px-1 relative w-full md:rounded-full z-10">
-                <div className="flex flex-wrap justify-between items-center md:mx-3 relative">
-                    <div className="flex items-center my-2">
-                        <Link href="/" className="flex items-center">
-                            <Image className="" height={20} width={100} src="/header/logo.svg" alt="Logo" />
-                        </Link>
-                        <div className="hidden md:flex">
-                            <Navlink />
-                        </div>
-                    </div>
+            <Button
+              className="hidden md:flex bg-primary hover:bg-primary/90 text-white shadow-[0_10px_20px_-5px_rgba(59,130,246,0.5)] px-8 py-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+            >
+              تواصل معنا
+            </Button>
 
-                    <div className="hidden md:flex items-center space-x-4">
-                        <Button className="text-xl" variant="default" size="lg">
-                            <span className="px-2">{t('contactus')}</span>
-                        </Button>
-                    </div>
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden p-3 bg-gray-50 rounded-2xl text-secondary hover:bg-primary hover:text-white transition-all duration-300"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
 
-                    {/* زر فتح قائمة الجوال */}
-                    <button
-                        type="button"
-                        aria-controls="mobile-menu"
-                        aria-expanded={isMobileMenuOpen}
-                        onClick={toggleMobileMenu}
-                        className="md:hidden inline-flex items-center p-1 text-sm text-primary rounded-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-200 border border-primary"
-                    >
-                        <span className="sr-only">فتح القائمة الرئيسية</span>
-                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                fillRule="evenodd"
-                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </button>
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="lg:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-white/95 backdrop-blur-2xl rounded-[30px] border border-gray-100 shadow-2xl p-8 z-50 overflow-hidden"
+            >
+              <nav className="flex flex-col gap-6">
+                {menuItems.map((item, index) => (
+                  <motion.a
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    key={item.href}
+                    href={item.href}
+                    className="text-xl font-black text-secondary hover:text-primary transition-colors py-2 flex items-center justify-between group"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.title}
+                    <ArrowRight className="w-6 h-6 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 translate-x-4" />
+                  </motion.a>
+                ))}
+                <div className="pt-6 border-t border-gray-50 flex flex-col gap-4">
+                  <Button className="bg-secondary text-white w-full py-7 rounded-2xl font-black text-lg">
+                    تحميل البروفايل
+                  </Button>
+                  <Button className="bg-primary text-white w-full py-7 rounded-2xl font-black text-lg shadow-xl">
+                    تواصل معنا
+                  </Button>
                 </div>
-                {/* قائمة الجوال */}
-                <div
-                    id="mobile-menu"
-                    className={`absolute z-30 top-0 py-2 w-screen h-screen bg-white shadow-lg transition-all duration-300 ease-in-out md:hidden
-                    ${isArabic ? "right-0" : "left-0"}
-                    ${isMobileMenuOpen
-                            ? "opacity-100 translate-x-0"
-                            : isArabic
-                                ? "opacity-0 translate-x-full"
-                                : "opacity-0 -translate-x-full"
-                        }`}
-                >
-                    <div className="flex flex-col h-screen">
+              </nav>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </header>
+  );
+};
 
-                        <div className="flex flex-wrap justify-between items-center px-4 flex-shrink-0">
-                            <Link href="/" className="flex items-center">
-                                <Image className="" height={20} width={100} src="/header/logo.svg" alt="Logo" />
-                            </Link>
-                            <button
-                                type="button"
-                                aria-controls="mobile-menu"
-                                aria-expanded={isMobileMenuOpen}
-                                onClick={toggleMobileMenu}
-                                className="md:hidden inline-flex items-center p-1 text-sm text-primary rounded-lg hover:bg-white focus:outline-none focus:ring-2 focus:ring-gray-200 border border-primary"
-                            >
-                                <span className="sr-only">فتح القائمة الرئيسية</span>
-                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
-                        <div className="overflow-y-auto flex-1 px-4 pt-4 pb-28">
-                            <Navlink />
-                        </div>
+// Internal Arrow icon for mobile menu
+const ArrowRight = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="3"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M5 12h14m-7-7 7 7-7 7" />
+  </svg>
+)
 
-                        <div className="flex-shrink-0 absolute inset-x-0 bottom-0 px-4 bg-white py-4">
-                            <Link
-                                href={`/${locale}/contact_us`}
-                                className="bg-primary mx-2 border border-primary py-2.5 px-2 rounded-md flex justify-center items-center"
-                            >
-                                <span className="px-2 text-white font-extrabold">{t('contactus')}</span>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </header>
-    );
-}
+export default Header;
+
