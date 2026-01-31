@@ -10,9 +10,6 @@ const nextConfig: NextConfig = {
 			},
 		],
 	},
-	devIndicators: {
-		appIsrStatus: false,
-	},
 };
 
 const withNextIntl = createNextIntlPlugin();

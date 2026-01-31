@@ -2,7 +2,7 @@
 import { useTranslations } from "next-intl";
 import { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
-import { ArrowLeft, CheckCircle2, LayoutDashboard, Smartphone, ChevronLeft } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, LayoutDashboard, Smartphone, ChevronLeft, Users, Building2, Scale, Factory, Wallet } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
 import { getProjects } from "@/utils/data";
 
@@ -22,6 +22,18 @@ const Project = () => {
     }, [projects.length]);
 
     const activeProject = projects[activeIndex];
+
+    const getIcon = (index: number) => {
+        switch (index) {
+            case 0: return <Wallet className="w-7 h-7" />;
+            case 1: return <Users className="w-7 h-7" />;
+            case 2: return <Building2 className="w-7 h-7" />;
+            case 3: return <Scale className="w-7 h-7" />;
+            case 4: return <Smartphone className="w-7 h-7" />;
+            case 5: return <Factory className="w-7 h-7" />;
+            default: return <LayoutDashboard className="w-7 h-7" />;
+        }
+    };
 
     return (
         <section id="products" className="py-24 lg:py-32 relative overflow-hidden bg-[#fafafa] dark:bg-secondary/50 transition-colors duration-300">
@@ -46,15 +58,15 @@ const Project = () => {
                             <button
                                 key={pro.id}
                                 onClick={() => setActiveIndex(index)}
-                                className={`w-full text-start p-8 rounded-[30px] border-2 transition-all duration-500 flex items-center justify-between group ${activeIndex === index
-                                    ? "bg-white dark:bg-white/10 border-primary shadow-2xl shadow-primary/10 scale-105"
+                                className={`w-full text-start p-6 rounded-[25px] border-2 transition-all duration-500 flex items-center justify-between group ${activeIndex === index
+                                    ? "bg-white dark:bg-white/10 border-primary shadow-2xl shadow-primary/10 scale-102"
                                     : "bg-transparent border-transparent hover:border-gray-200 dark:hover:border-white/10 opacity-60 hover:opacity-100"
                                     }`}
                             >
                                 <div className="flex items-center gap-6">
                                     <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${activeIndex === index ? "bg-primary text-white" : "bg-gray-100 dark:bg-white/5 text-secondary dark:text-white"
                                         }`}>
-                                        {index === 0 ? <LayoutDashboard className="w-7 h-7" /> : <Smartphone className="w-7 h-7" />}
+                                        {getIcon(index)}
                                     </div>
                                     <div>
                                         <h3 className={`text-2xl font-black transition-colors duration-500 ${activeIndex === index ? "text-secondary dark:text-white" : "text-gray-400 dark:text-white/40"
@@ -128,7 +140,7 @@ const Project = () => {
                                                 src={activeProject.image}
                                                 alt={activeProject.title}
                                                 fill
-                                                className="object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)] transform group-hover:scale-110 transition-transform duration-700 dark:brightness-110"
+                                                className="object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.15)] transform group-hover:scale-110 transition-transform duration-700 dark:brightness-110 rounded-4xl"
                                             />
                                         </div>
 

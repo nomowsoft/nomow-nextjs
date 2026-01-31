@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import SwitchLocale from "./swich_locale";
 import { ThemeToggle } from "../theme-toggle";
+import { Link } from "@/i18n/navigation";
 
 const Header = () => {
   const t = useTranslations('Header');
@@ -22,7 +23,7 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { title: t('menu_home'), href: "#hero" },
+    { title: t('menu_home'), href: "/" },
     { title: t('menu_about'), href: "#about" },
     { title: t('menu_services'), href: "#services" },
     { title: t('menu_products'), href: "#products" },
@@ -44,14 +45,14 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
             {menuItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="relative text-base font-black text-secondary/70 dark:text-white/70 hover:text-primary dark:hover:text-primary transition-colors py-2 group"
               >
                 {item.title}
                 <span className="absolute bottom-0 right-0 w-0 h-1 bg-primary rounded-full group-hover:w-full transition-all duration-300" />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -68,11 +69,13 @@ const Header = () => {
               {t('download_profile')}
             </Button>
 
-            <Button
-              className="hidden md:flex bg-primary hover:bg-primary/90 text-white shadow-[0_10px_20px_-5px_rgba(59,130,246,0.5)] px-8 py-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
-            >
-              {t('contactus')}
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="hidden md:flex bg-primary hover:bg-primary/90 text-white shadow-[0_10px_20px_-5px_rgba(59,130,246,0.5)] px-8 py-6 rounded-2xl font-black text-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+              >
+                {t('contactus')}
+              </Button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -112,9 +115,11 @@ const Header = () => {
                   <Button className="bg-secondary dark:bg-primary text-white w-full py-7 rounded-2xl font-black text-lg">
                     {t('download_profile')}
                   </Button>
-                  <Button className="bg-primary text-white w-full py-7 rounded-2xl font-black text-lg shadow-xl">
-                    {t('contactus')}
-                  </Button>
+                  <Link href="/contact" className="w-full">
+                    <Button className="bg-primary text-white w-full py-7 rounded-2xl font-black text-lg shadow-xl" onClick={() => setMobileMenuOpen(false)}>
+                      {t('contactus')}
+                    </Button>
+                  </Link>
                 </div>
               </nav>
             </motion.div>

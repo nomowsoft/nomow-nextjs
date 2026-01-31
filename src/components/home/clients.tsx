@@ -1,8 +1,9 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Star, Quote, MessageSquareQuote } from "lucide-react";
 
 const Clients = () => {
     const t = useTranslations('OurClient');
+    const locale = useLocale();
     const testimonials = [
         {
             name: t('test1_name'),
@@ -114,7 +115,7 @@ const Clients = () => {
                             </div>
 
                             {/* Decorative Corner Element */}
-                            <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-tl-[100px] -z-10 group-hover:bg-primary/10 transition-colors duration-500" />
+                            <div className={`absolute bottom-0 ${locale === 'ar' ? 'left-0 rounded-tr-[100px] rounded-bl-[32px]' : 'right-0 rounded-tl-[100px] rounded-br-[32px]'} w-32 h-32 bg-primary/5 -z-10 group-hover:bg-primary/10 transition-colors duration-500`} />
                         </div>
                     ))}
                 </div>

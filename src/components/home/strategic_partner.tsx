@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useMemo } from "react";
 import Image from "next/image";
 import { getStrategicPartners } from "@/utils/data";
@@ -6,6 +6,7 @@ import { Handshake, ShieldCheck, Globe } from "lucide-react";
 
 const StrategicPartner = () => {
     const t = useTranslations("StrategicPartner");
+    const locale = useLocale();
     const partners = useMemo(() => getStrategicPartners(t), [t]);
 
     return (
@@ -47,9 +48,9 @@ const StrategicPartner = () => {
                         {partners?.map((par) => (
                             <div
                                 key={par.id}
-                                className="group relative bg-white dark:bg-white/5 rounded-[35px] p-8 border border-gray-100 dark:border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-3"
+                                className="group relative bg-white dark:bg-white/5 rounded-[35px] p-8 border border-gray-100 dark:border-white/10 shadow-[0_15px_40px_rgba(0,0,0,0.03)] hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-3 overflow-hidden"
                             >
-                                <div className="absolute top-0 right-0 w-2 h-0 bg-primary group-hover:h-full transition-all duration-700 rounded-bl-full" />
+                                <div className={`absolute top-0 ${locale === 'ar'? 'right-0': 'left-0'} w-2 h-0 bg-primary group-hover:h-full transition-all duration-700`} />
 
                                 <div className="mb-6 flex justify-center">
                                     <div className="relative w-full h-32">

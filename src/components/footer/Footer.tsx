@@ -1,7 +1,7 @@
 "use client";
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Mail, Phone, MessageCircle, Facebook, Twitter, Linkedin, Github, ExternalLink, ShieldCheck, Heart } from 'lucide-react';
 
 export default function Footer() {
@@ -51,11 +51,11 @@ export default function Footer() {
                         </h3>
                         <ul className="space-y-4">
                             {[
-                                { name: t('linkItem1'), href: "#" },
-                                { name: t('linkItem2'), href: "#" },
-                                { name: t('linkItem3'), href: "#" },
-                                { name: t('linkItem4'), href: "#" },
-                                { name: t('linkItem5'), href: "#" }
+                                { name: t('linkItem1'), href: "/" },
+                                { name: t('linkItem2'), href: "/#about" },
+                                { name: t('linkItem3'), href: "/#services" },
+                                { name: t('linkItem4'), href: "/#products" },
+                                { name: t("titleContactus"), href: "/contact" }
                             ].map((link) => (
                                 <li key={link.name}>
                                     <Link href={link.href} className="text-gray-400 font-bold hover:text-white hover:translate-x-2 rtl:hover:translate-x-[-2px] inline-block transition-all duration-300 flex items-center gap-2">
